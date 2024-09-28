@@ -1,14 +1,12 @@
 package br.inatel.trabalho.impl;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 import br.inatel.trabalho.api.product.ProductInterface;
 import br.inatel.trabalho.api.product.ProductTO;
-import br.inatel.trabalho.interfaces.product.ProductLocal;
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
+
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -22,11 +20,11 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/product")
 public class ProductResource implements ProductInterface {
 	
-	@Inject
-	Logger log;
+	//@Inject
+	//Logger log;
 	
-	@EJB
-	private ProductLocal productBean;
+	//@EJB
+	//private ProductLocal productBean;
 	
 	@POST
 	@Path("/state")
@@ -37,13 +35,13 @@ public class ProductResource implements ProductInterface {
 		
 	}
 	
+	@Override
 	@GET
 	@Path("/products")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public List<ProductTO> getProducts() {
+	@Produces(MediaType.TEXT_HTML)
+	public String getProducts() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Ok produtos";
 	}
 
 	@GET
