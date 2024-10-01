@@ -5,12 +5,13 @@ import java.util.logging.Logger;
 
 import br.inatel.trabalho.api.product.ProductTO;
 import br.inatel.trabalho.interfaces.product.ProductLocal;
+import br.inatel.trabalho.interfaces.product.ProductRemote;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 
 @Stateless
-public class ProductBean implements ProductLocal {
+public class ProductBean implements ProductLocal, ProductRemote {
 	
 	@Inject
 	Logger log;
