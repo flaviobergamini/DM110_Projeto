@@ -6,7 +6,7 @@ import br.inatel.trabalho.api.product.ProductTO;
 
 public interface ProductRemote {
 	public void saveState(ProductTO product);
-	public List<ProductTO> getProducts();
+	public String getProducts();
 	public List<ProductTO> getProductById(int id);
 	public void updateProduct(ProductTO product);
 	public void deleteProduct(int id);
