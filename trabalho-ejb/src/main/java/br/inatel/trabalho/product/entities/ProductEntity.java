@@ -1,4 +1,4 @@
-/*package br.inatel.trabalho.product.entities;
+package br.inatel.trabalho.product.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,7 +16,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductEntity {
+	
 	@Id
-	private int id;
-
-}*/
+	private int code;
+	private String name;
+	private String description;
+	private double price; 
+	private String category;
+}
