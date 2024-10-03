@@ -18,6 +18,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @RequestScoped
 @Path("/product")
@@ -34,8 +35,13 @@ public class ProductResource implements ProductInterface {
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createProduct(ProductTO product) {
-		productBean.createProduct(product);
+	public Response createProduct(ProductTO product) {
+		try {
+			productBean.createProduct(product);
+			return Response.status(Response.Status.CREATED).entity(product).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 		
 	}
 	
@@ -43,32 +49,67 @@ public class ProductResource implements ProductInterface {
 	@GET
 	@Path("/products")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ProductTO> getProducts() {
-		List<ProductTO> Products = productBean.getProducts();
-		return Products;
+	public Response getProducts() {
+		try {
+			List<ProductTO> Products = productBean.getProducts();
+			return Response.ok(Products).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 
+	@Override
 	@GET
 	@Path("/product/{code}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public ProductTO getProductByCode(@PathParam("code") int code) {
-		ProductTO Product = productBean.getProductByCode(code);
-		return Product;
+	public Response getProductByCode(@PathParam("code") int code) {
+		try {
+			ProductTO Product = productBean.getProductByCode(code);
+			
+			if (Product == null)
+				return Response.status(Response.Status.NOT_FOUND).build();
+			
+			return Response.ok(Product).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 	
+	@Override
 	@PUT
 	@Path("/update")
-	@Override
-	public void updateProduct(ProductTO product) {
-		productBean.updateProduct(product);
+	public Response updateProduct(ProductTO product) {
+		try {
+			ProductTO Product = productBean.getProductByCode(product.getCode());
+			
+			if (Product == null)
+				return Response.status(Response.Status.NOT_FOUND).build();
+			
+			productBean.updateProduct(product);
+			
+			return Response.status(Response.Status.NO_CONTENT).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 
 	@DELETE
 	@Path("/delete/{code}")
 	@Override
-	public void deleteProduct(@PathParam("code") int code) {
-		productBean.deleteProduct(code);
+	public Response deleteProduct(@PathParam("code") int code) {
+		try {
+			ProductTO Product = productBean.getProductByCode(code);
+			
+			if (Product == null)
+				return Response.status(Response.Status.NOT_FOUND).build();
+			
+			productBean.deleteProduct(code);
+			
+			return Response.status(Response.Status.NO_CONTENT).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
+		
 	}
 
 }
