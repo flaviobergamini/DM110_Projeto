@@ -34,43 +34,41 @@ public class ProductResource implements ProductInterface {
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void saveState(ProductTO product) {
-		// TODO Auto-generated method stub
+	public void createProduct(ProductTO product) {
+		productBean.createProduct(product);
 		
 	}
 	
 	@Override
 	@GET
 	@Path("/products")
-	@Produces(MediaType.TEXT_HTML)
-	public String getProducts() {
-		// TODO Auto-generated method stub
-		return "Ok produtos";
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ProductTO> getProducts() {
+		List<ProductTO> Products = productBean.getProducts();
+		return Products;
 	}
 
 	@GET
-	@Path("/product/{id}")
+	@Path("/product/{code}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
-	public List<ProductTO> getProductById(@PathParam("id") int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductTO getProductByCode(@PathParam("code") int code) {
+		ProductTO Product = productBean.getProductByCode(code);
+		return Product;
 	}
 	
 	@PUT
 	@Path("/update")
 	@Override
 	public void updateProduct(ProductTO product) {
-		// TODO Auto-generated method stub
-		
+		productBean.updateProduct(product);
 	}
 
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/delete/{code}")
 	@Override
-	public void deleteProduct(@PathParam("id") int id) {
-		// TODO Auto-generated method stub
-		
+	public void deleteProduct(@PathParam("code") int code) {
+		productBean.deleteProduct(code);
 	}
 
 }
