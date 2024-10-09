@@ -1,13 +1,13 @@
-package br.inatel.trabalho.product.beans;
+package br.inatel.trabalho.beans;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 import br.inatel.trabalho.api.product.ProductTO;
+import br.inatel.trabalho.entities.ProductEntity;
 import br.inatel.trabalho.interfaces.product.ProductLocal;
 import br.inatel.trabalho.interfaces.product.ProductRemote;
-import br.inatel.trabalho.product.entities.ProductEntity;
-import br.inatel.trabalho.product.support.ProductConversor;
+import br.inatel.trabalho.support.ProductConversor;
 import jakarta.ejb.Local;
 import jakarta.ejb.Remote;
 import jakarta.ejb.Stateless;
@@ -73,6 +73,7 @@ public class ProductBean implements ProductLocal, ProductRemote {
 		}
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public void deleteProduct(int code) {
 		ProductEntity product = em.find(ProductEntity.class, code);

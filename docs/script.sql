@@ -6,3 +6,11 @@ CREATE TABLE Product (
     category VARCHAR(20) NOT NULL,
     PRIMARY KEY(code)
 );
+
+CREATE TABLE Audit(
+    id INTEGER NOT NULL,
+    registerCode INTEGER,
+    operation VARCHAR(10),
+    timestamp TIMESTAMP
+);
+    

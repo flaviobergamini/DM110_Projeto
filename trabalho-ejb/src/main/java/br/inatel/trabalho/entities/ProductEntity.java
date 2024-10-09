@@ -1,4 +1,4 @@
-package br.inatel.trabalho.product.entities;
+package br.inatel.trabalho.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,10 +1,10 @@
-package br.inatel.trabalho.product.support;
+package br.inatel.trabalho.support;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import br.inatel.trabalho.api.product.ProductTO;
-import br.inatel.trabalho.product.entities.ProductEntity;
+import br.inatel.trabalho.entities.ProductEntity;
 
 public class ProductConversor {
 
