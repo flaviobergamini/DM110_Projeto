@@ -26,21 +26,18 @@ public class auditMDB implements MessageListener {
 	@PersistenceContext(unitName = "product_pu")
 	private EntityManager em;
 	
-	
 	@Override
 	public void onMessage(Message message) {
-		log.info("AUDITORIA SENDO REALIZADA");
 		try {
 			
 			if(message instanceof TextMessage) {
 				TextMessage textMessage = (TextMessage) message;
 				String json = textMessage.getText();
-				AuditEntity auditEntity = AuditConversor.converterFromJson(json);
+				AuditEntity auditEntity = AuditEntity.fromJson(json);
 				
 				if(auditEntity!=null) {
-					log.info("Auditoria registrada com sucesso");
 					em.persist(auditEntity);
-					
+					log.info("Auditoria realizada com sucesso!");
 				}else {
 					log.warning("Auditoria não registrada");
 				}
@@ -49,8 +46,6 @@ public class auditMDB implements MessageListener {
 		}catch(JMSException eJms) {
 			eJms.printStackTrace();
 		}
-		
-		
 	}
 
 }

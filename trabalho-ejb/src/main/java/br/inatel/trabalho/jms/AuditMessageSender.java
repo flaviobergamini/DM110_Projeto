@@ -18,10 +18,10 @@ public class AuditMessageSender {
 	@Resource(lookup = "java:/jms/queue/Stockqueue")
 	private Queue queue;
 
-	public void sendTextMessage(String text) {
+	public void sendProductAudit(String text) {
 		try (JMSContext context = connectionFactory.createContext();) {
 			TextMessage txtMsg = context.createTextMessage(text);
-			context.createProducer().send(queue, txtMsg);
+			context.createProducer().send(queue, txtMsg);	
 		} catch (Exception e) {
 			// handle exception properly
 			e.printStackTrace();
