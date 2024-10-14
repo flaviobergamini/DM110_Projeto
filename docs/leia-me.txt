@@ -4,3 +4,4 @@ User: SA
 Password: senhadm110
 
 module add --name=br.inatel.dm110.org.hsqldb --dependencies=javax.transaction.api --export-dependencies=javax.api --resources=C:\tools\hsqldb-2.7.1.jar
+jms-queue add --queue-address=Stockqueue --durable=true --entries=["java:/jms/queue/Stockqueue"]

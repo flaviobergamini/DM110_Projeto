@@ -1,4 +1,4 @@
-package br.inatel.trabalho.product.entities;
+package br.inatel.trabalho.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "PRODUCT",schema="PUBLIC")
 
 @Getter
 @Setter
