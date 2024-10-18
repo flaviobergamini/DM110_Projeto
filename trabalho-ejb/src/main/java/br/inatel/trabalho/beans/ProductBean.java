@@ -23,8 +23,8 @@ import jakarta.persistence.TypedQuery;
 
 @Stateless
 @Local(ProductLocal.class)
-@Remote(ProductRemote.class)
-public class ProductBean implements ProductLocal, ProductRemote {
+//@Remote(ProductRemote.class)
+public class ProductBean implements ProductLocal {
 	
 	@Inject 
 	Logger log;
