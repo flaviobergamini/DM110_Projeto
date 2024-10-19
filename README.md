@@ -3,13 +3,11 @@
 ### :books: Descrição
 
 <p>Projeto da disciplina DM110 - Desenvolvimento JavaEE </p>
-<p>Trata-se de um projeto simples que utiliza-se dos conhecimentos relacionados a JavaEE adquiridos na disciplina, a ideia principal é criar de forma concisa um serviço para realização de um CRUD completo de produtos, esse serviço conta com auditoria integral de todos as operações e chamadas realizadas ao decorrer da utilização.</p>
+<p>Trata-se de um projeto simples que se utiliza dos conhecimentos relacionados a Java EE adquiridos na disciplina DM110 da pós-graduação. A ideia principal é criar de forma concisa um serviço para realização de um CRUD completo de produtos no banco de dados HyperSQL, esse serviço conta com auditoria integral de todas as operações e chamadas realizadas ao decorrer da utilização. É válido ressaltar que as tabelas do banco de dados HyperSQL possuem o problema de lock, ou seja, somente um usuário pode acessar e manipular a tabela e o banco por vez.</p>
 
-### :computer: Projeto
-<p>A estrutura básica de funcionamento de projeto pode ser vista na imagem abaixo: </p> 
+### :computer: Arquitetura geral do projeto
 
-<p align="center">
-<img src="general_arch.png" height="400" width="600" >
+![Arquitetura DM110](https://github.com/user-attachments/assets/33896243-9372-4d2b-9fb5-ac06a23cc43b)
 
 #### :hammer_and_wrench: Recursos utilizados na construção
 - [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/)
@@ -18,24 +16,37 @@
 - [Maven](https://maven.apache.org/index.html)
 - [Lombok](https://projectlombok.org)
 - [HyperSQL](http://hsqldb.org)
+- [Postman](https://www.postman.com/)
 
-#### :building_construction: Instalação
+#### :building_construction: Diagrama de classes UML do projeto
 
-#### :arrow_forward: Execução
+![DM110](https://github.com/user-attachments/assets/b35d1547-af9e-41d2-aa2d-1ffd036a8def)
 
+#### :building_construction: Diagrama Entidade Relacionamento (DER) do banco de dados
 
-### :computer: Funcionalidades do Projeto
-<p>Como descrito anteriormente a ideia principal é realizar operações de um produto, as informações trabalhadas a cerca deste serão: </p>
+![DM110_DER (1)](https://github.com/user-attachments/assets/b63636a1-bd3f-4a1a-ad12-4e3f1a947b88)
 
-```
-code - Código de registro do produto
-name - Nome do produto.
-description - Breve descrição acerca do produto.
-price - Valor do produto
-category - Categoria do produto (ex. Limpeza, Alimentação...)
-```
+<p>Para a tabela Product, tabela principal do banco de dados onde serão realizadas as operações, possui as seguintes definições para seus atributos:</p>
 
-Dessa forma acessando os endpoints você poderá manipular e trabalhar com as operações mais básicas relacionadas a estes produtos.
+- code: Código de registro do produto(chave primária);
+- name: Nome do produto;
+- description: Breve descrição acerca do produto;
+- price: Valor do produto;
+- category: Categoria do produto (ex. Limpeza, Alimentação…).
+
+<p>A tabela Audit é utilizada internamente pelo sistema para realizar toda a auditoria do sistema, permitindo rastrear os fluxos das operações realizadas. Ela possui as seguintes definições para seus atributos:</p>
+
+- id: Código identificador do log registrado (chave primária);
+- registerCode: Código do produto no qual está sendo realizada alguma operação (chave estrangeira);
+- operation: Operação que foi realizada('Create','Update','Read','Delete');
+- timestamp: Data e hora onde aconteceu a operação.
+    
+### :computer: Rotas disponíveis na API REST
+<p>Esse sistema backend disponibiliza endpoints para utilização em outros sistemas, dessa forma acessando os endpoints você poderá manipular e trabalhar com as operações mais básicas relacionadas a estes produtos.</p>
+
+<p>Todas as operações realizadas são auditadas, aumentando o nível de controle e maturidade da plataforma.</p>
+
+<p>Abaixo se encontra a relação de endpoints, Método HTTP relacionado e descrição: </p>
 
 | Endpoint |Metodo| Descrição |
 |---|---|---|
@@ -44,22 +55,6 @@ Dessa forma acessando os endpoints você poderá manipular e trabalhar com as op
 | `/product/{code}` | GET|Utilizado para realizar a recuperação de um produto especifico|
 | `/product/{code}`|PUT |Utilizado para realizar a atualização de um produto especifico|
 | `/product/{code}`| DELETE |Utilizado para realizar a remoção de um produto especifico|
-
-Todas as operações realizadas são auditadas, dessa forma aumentando o nível de controle  e maturidade da plataforma. O exemplo a seguir mostra o valor que você terá acesso:
-
-```
-
-[identifier][timestamp][register_code][operation][more information...]
-```
-
-Dessa forma de forma fácil você terá acesso a informações como :
-
-```
-identifier : Permite identificar qual o log em questão.
-register_code : Código do produto cujo o qual está sendo realizada alguma operação.
-operation: Operação que foi realizada('Create','Update','Read','Delete')
-timestamp: Data e tempo onde aconteceu a operação.
-```
 
 ## :gear: Autores
 
