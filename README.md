@@ -7,9 +7,7 @@
 
 ### :computer: Arquitetura geral do projeto
 
-<p align="center">
-    ![Arquitetura DM110png](https://github.com/user-attachments/assets/1e51dc61-d805-421b-8d44-450aa6b6301d)
-</p>
+![Arquitetura DM110png](https://github.com/user-attachments/assets/1e51dc61-d805-421b-8d44-450aa6b6301d)
 
 #### :hammer_and_wrench: Recursos utilizados na construção
 - [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/)
