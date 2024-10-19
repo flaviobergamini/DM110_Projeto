@@ -7,7 +7,9 @@
 
 ### :computer: Arquitetura geral do projeto
 
-![Arquitetura DM110](https://github.com/user-attachments/assets/33896243-9372-4d2b-9fb5-ac06a23cc43b)
+<p align="center">
+    ![Arquitetura DM110png](https://github.com/user-attachments/assets/1e51dc61-d805-421b-8d44-450aa6b6301d)
+</p>
 
 #### :hammer_and_wrench: Recursos utilizados na construção
 - [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/)
@@ -24,7 +26,7 @@
 
 #### :building_construction: Diagrama Entidade Relacionamento (DER) do banco de dados
 
-![DM110_DER (1)](https://github.com/user-attachments/assets/b63636a1-bd3f-4a1a-ad12-4e3f1a947b88)
+![DM110_DERpng](https://github.com/user-attachments/assets/d0206a39-1ad2-4626-b1e7-f55137ade5b9)
 
 <p>Para a tabela Product, tabela principal do banco de dados onde serão realizadas as operações, possui as seguintes definições para seus atributos:</p>
 
